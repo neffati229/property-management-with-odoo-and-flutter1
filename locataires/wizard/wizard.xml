@@ -1,0 +1,29 @@
+<odoo>
+    <record id="wizard_model_wizard_view_form" model="ir.ui.view">
+        <field name="name">wizard.model.wizard.form</field>
+        <field name="model">wizard.model.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+                <group string="CréerLocataire">
+                            <field name="locataire"/>
+                            <field name="type"/>
+                             <br></br><br></br><br></br>
+                       <footer>
+                            <button name="custom_button" string="Sauvegarder et fermer" type="object" class="oe_highlight"/>
+                            <button name="create_custom" string="Enregistrer et créer  " type="object" class="oe_highlight"/>
+                            <button name="ustom_button" string="Ne pas sauvegarder" type="object" class="oe_highlight"/>
+                       </footer>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_model_wizard_action" model="ir.actions.act_window">
+        <field name="name">wizard Model Wizard</field>
+        <field name="res_model">wizard.model.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

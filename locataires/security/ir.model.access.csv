@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bien_management,access_bien_management,model_bien_management,base.group_user,1,1,1,1
+access_wizard_model_wizard,access_wizard_model_wizard,model_wizard_model_wizard,base.group_user,1,1,1,1
+access_bail_contract,access_bail_contract,model_bail_contract,base.group_user,1,1,1,1

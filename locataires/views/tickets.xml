@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="my_module_helpdesk_ticket_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.form.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                  <xpath expr="//field[@name='description']" position="after">
+
+                    <h3>Pièce jointe</h3>
+<!--                      <field name="image" widget="image" class="oe_avatar"/>-->
+                        <field name="images"/>
+                       <notebook>
+                            <page name="page_width" string="Parties prenantes">
+                             <group>
+                             <group>
+                                <field name="bien"/>
+                                <field name="propriétaire"/>
+                             </group>
+                             <group>
+                               <field name="bail"/>
+                               <field name="contact_de_bail"/>
+                             </group>
+                             </group>
+                            </page>
+                            <page name="page_width" string="Infos supplémentaires">
+<!--                                <field name="groups_id"/>-->
+                            </page>
+                            <page name="page_width" string="Piéces jointes">
+<!--                                <field name="groups_id"/>-->
+                            </page>
+                      </notebook>
+
+
+		        </xpath>
+
+                <xpath expr="//form/sheet/group/group" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
+

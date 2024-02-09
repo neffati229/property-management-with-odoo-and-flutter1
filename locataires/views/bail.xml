@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="bail_action" model="ir.actions.act_window">
+            <field name="name">baill</field>
+            <field name="res_model">bail.contract</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.ui.view" id="bail_form_view">
+            <field name="name">bail.contract.form.view</field>
+            <field name="model">bail.contract</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <!--                        attrs="{'invisible': ['|', ('type', '=', 'opportunity'), ('active', '=', False)]}"-->
+                        <button name="button_in_progress" class="oe_highlight" string="Valider ce bail" type="object"
+                                attrs="{'invisible': ['|', ('state', '=', 'ouvrir'), ('state', '=', 'fermer')]}"/>
+                        <button name="custom_button" class="oe_highlight" string="ouvrir" type="object"
+                                attrs="{'invisible': ['|', ('state', '=', 'draft'), ('state', '=', 'fermer')]}"/>
+                        <button name="button_progress" class="oe_highlight" string="fermer" type="object"
+                                attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group style="Background-color: #E1D5E7;">
+                            <group>
+                                <field name="bien" domain="[('Dis_location', '=', True)]"/>
+                                <field name="gestionaire"/>
+<!--                                <field name="type_dubail"/>-->
+                                <field name="type_dubaill"/>
+                                <field name="duree"/>
+
+                            </group>
+                            <group>
+                                <field name="date_de_debut"/>
+                                <field name="date_de_fin"/>
+                                <field name="date_de_signature"/>
+                                 <field name="prix"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <group>
+                                    <h1>Locataire</h1>
+                                    <br></br>
+                                    <button name="%(wizard_model_wizard_action)d" string="ajouter" type="action"
+                                            class="oe_highlight"/>
+                                </group>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="baillocataire" model="ir.ui.view">
+            <field name="name">bail.contract.tree</field>
+            <field name="model">bail.contract</field>
+            <field name="priority" eval="6"/>
+            <field name="arch" type="xml">
+                <tree string="Locataire">
+                    <field name="bien"/>
+                    <field name="gestionaire"/>
+<!--                    <field name="type_dubail"/>-->
+                    <!--                            <field name="duree"/>-->
+                    <field name="date_de_debut"/>
+                    <field name="date_de_fin"/>
+                    <field name="date_de_signature"/>
+                    <!--                            <button name="wizard_model_wizard_action" string="action" type="object" class="oe_highlight"/>-->
+                </tree>
+            </field>
+        </record>
+        <menuitem id="bail_menu"
+                  parent="bi_base_menu"
+                  name="baill"
+                  action="bail_action"
+                  sequence="3"/>
+
+    </data>
+</odoo>

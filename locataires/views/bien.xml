@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="bien_action" model="ir.actions.act_window">
+            <field name="name">Bien</field>
+            <field name="res_model">bien.management</field>
+            <field name="view_mode">tree,form</field>
+      </record>
+         <menuitem id="bi_base_menu" name="Locataire" action="bien_action"
+         sequence="1"/>
+
+        <record model="ir.ui.view" id="bien_management_form_view">
+            <field name="name">bien.management.form.view</field>
+            <field name="model">bien.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group style="Background-color: #E1D5E7;">
+                            <group>
+                              <field name="name"/>
+                              <field name="Dis_location" widget="checkbox"/>
+                              <field name="bien_parent"/>
+                              <field name="code_du_bien"/>
+                              <field name="type"/>
+                              <field name="gestionaire"/>
+                              <field name="proprietaire"/>
+                            </group>
+                            <group>
+                                <field name="photo" widget="image"/>
+
+                            </group>
+                             <group>
+                              <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="rue..." class="o_address_street"/>
+                                    <field name="street2" placeholder="rue2..." class="o_address_street"/>
+                                    <field name="city" placeholder="ville" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="état" options='{"no_open": True}'/>
+                                    <field name="zip" placeholder="code postal" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="pays" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                </div>
+                             </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <record id="view_bien_management_tree" model="ir.ui.view">
+            <field name="name">bien.management.tree</field>
+            <field name="model">bien.management</field>
+            <field name="priority" eval="6"/>
+            <field name="arch" type="xml">
+                <tree string="Locataire">
+                    <field name="name"/>
+                    <field name="Dis_location" widget="checkbox"/>
+                    <field name="bien_parent"/>
+                    <field name="code_du_bien"/>
+                    <field name="type"/>
+                    <field name="gestionaire"/>
+                    <field name="proprietaire"/>
+                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                    <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                </tree>
+            </field>
+        </record>
+
+         <menuitem id="bien_menu"
+                name="Bien"
+                action="bien_action"
+               parent="bi_base_menu"
+                sequence="2"/>
+    </data>
+</odoo>
